@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('artwork_listings', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('artist');
             $table->timestamps();
         });
     }
