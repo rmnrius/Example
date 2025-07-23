@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Artist;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Painting>
@@ -17,7 +18,7 @@ class PaintingFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->title(),
+            'title' => fake()->sentence(),
             'artist_id' => Artist::factory(),
             'price' => fake()->randomFloat(2, 10, 1000),
         ];

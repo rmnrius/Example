@@ -10,6 +10,10 @@ class Painting extends Model{
 
     protected $fillable = ['title', 'price'];
 
+    public function artist(){
+        return $this->belongsTo(Artist::class);
+    }
+
 }
 
 
