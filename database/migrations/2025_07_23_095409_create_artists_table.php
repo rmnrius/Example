@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('artwork_listings', function (Blueprint $table) {
+        Schema::create('artists', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(App\Models\Artist::class);
-            $table->string('title');
-            $table->string('price');
+            
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('artwork_listings');
+        Schema::dropIfExists('artists');
     }
 };
