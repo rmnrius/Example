@@ -2,24 +2,20 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Job;
+use App\Models\Painting;
 
 Route::get('/', function () {
-    $painting = Job::all();
-    
-    dd($painting);
-
-    // return view('index');
+    return view('index');
 });
 
 Route::get('/gallery', function () {
     return view('gallery', [
-        'paintings' => Job::all()
+        'paintings' => Painting::all()
     ]);
 });
 
 Route::get('/gallery/{id}', function ($id) {
-    $painting = Job::find($id);
+    $painting = Painting::find($id);
     
     return view('painting', ['painting' => $painting]);
 });
