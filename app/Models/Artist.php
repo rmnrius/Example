@@ -9,4 +9,10 @@ class Artist extends Model
 {
     /** @use HasFactory<\Database\Factories\ArtistFactory> */
     use HasFactory;
+
+
+    public function paintings()
+    {
+        return $this->hasMany(Painting::class);
+    }
 }
