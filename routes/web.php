@@ -1,11 +1,15 @@
 <?php
 
-use Illuminate\Support\Arr;
+
 use Illuminate\Support\Facades\Route;
 use App\Models\Painting;
 
 Route::get('/', function () {
-    return view('index');
+    $painting = Painting::all();
+    
+    dd($painting);
+
+    // return view('index');
 });
 
 Route::get('/gallery', function () {
