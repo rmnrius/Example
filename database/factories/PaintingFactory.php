@@ -18,7 +18,7 @@ class PaintingFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(),
+            'title' => rtrim($this->faker->sentence(2), '.:'),
             'artist_id' => Artist::factory(),
             'price' => fake()->randomFloat(2, 10, 1000),
         ];
