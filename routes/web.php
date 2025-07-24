@@ -9,8 +9,10 @@ Route::get('/', function () {
 });
 
 Route::get('/gallery', function () {
+    $paintings = Painting::with('artist')->paginate(3);
+
     return view('gallery', [
-        'paintings' => Painting::all()
+        'paintings' => $paintings
     ]);
 });
 

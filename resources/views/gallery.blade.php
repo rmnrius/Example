@@ -12,6 +12,11 @@
                 </div>
             </a>
         @endforeach
+
+        <div>
+            {{ $paintings->links() }}
+        </div>
+
     </div>
 
 </x-layout>
