@@ -8,7 +8,8 @@ class Painting extends Model{
     use HasFactory;
     protected $table = 'artwork_listings'; // Specify the table name if it's not the plural of the model name
 
-    protected $fillable = ['title', 'price'];
+    // protected $fillable = ['artist_id','title', 'price'];
+    protected $guarded = []; // Use guarded to allow mass assignment for all fields
 
     public function artist(){
         return $this->belongsTo(Artist::class);

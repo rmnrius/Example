@@ -9,17 +9,33 @@ Route::get('/', function () {
 });
 
 Route::get('/gallery', function () {
-    $paintings = Painting::with('artist')->paginate(3);
+    $paintings = Painting::with('artist')->latest()->paginate(3);
 
-    return view('gallery', [
+    return view('gallery.index', [
         'paintings' => $paintings
     ]);
 });
 
+Route::get('/gallery/create', function () {
+    return view('gallery.create');
+});
+
+
 Route::get('/gallery/{id}', function ($id) {
     $painting = Painting::find($id);
     
-    return view('painting', ['painting' => $painting]);
+    return view('gallery.show', ['painting' => $painting]);
+});
+
+Route::post('/gallery', function () {
+    // validation..........
+
+    Painting::create([
+        'title' => request('title'),
+        'artist_id' => 1,
+        'price' => request('price')
+    ]);
+    return redirect('/gallery');
 });
 
 Route::get('/about', function () {
