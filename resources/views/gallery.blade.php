@@ -3,14 +3,15 @@
         Gallery
     </x-slot:heading>
     
-    <ul>
+    <div class="space-y-4">
         @foreach ($paintings as $item)
-            <li>
-                <a href="/gallery/{{ $item['id'] }}">
-                    <strong>{{ $item['title'] }}:</strong> Artist: {{$item['artist']}}
-                </a>
-            </li>
+            <a href="/gallery/{{ $item['id'] }}" class="block px-4 py-6 border border-gray-200 rounded-lg">
+                <div class="font-bold text-purple-400 text-sm"> {{  $item->artist->name }} </div>
+                <div>
+                    <strong>{{ $item['title'] }}:</strong> Price: {{$item['price']}}
+                </div>
+            </a>
         @endforeach
-    </ul>
+    </div>
 
 </x-layout>
