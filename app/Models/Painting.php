@@ -14,6 +14,10 @@ class Painting extends Model{
         return $this->belongsTo(Artist::class);
     }
 
+    public function tags(){
+        return $this->belongsToMany(Tag::class, foreignPivotKey: 'artwork_listing_id', table: 'artwork_tags');
+    }
+
 }
 
 
