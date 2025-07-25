@@ -16,8 +16,6 @@ Route::controller(PaintingController::class)->group(function () {
     Route::patch('/gallery/{painting}', 'update');
     Route::delete('/gallery/{painting}', 'destroy');
 });
-
-
 Route::view('/about', 'about');
 Route::view('/contact', 'contact');
 
