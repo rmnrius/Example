@@ -24,9 +24,7 @@ Route::get('/gallery/create', function () {
 });
 
 //shows a specific painting
-Route::get('/gallery/{id}', function ($id) {
-    $painting = Painting::find($id);
-    
+Route::get('/gallery/{painting}', function ( Painting $painting) {
     return view('gallery.show', ['painting' => $painting]);
 });
 
@@ -46,10 +44,33 @@ Route::post('/gallery', function () {
     return redirect('/gallery');
 });
 
-Route::get('/gallery/{id}/edit', function ($id) {
-    $painting = Painting::find($id);
-    
+
+//display the edit form for a specific painting
+Route::get('/gallery/{painting}/edit', function (Painting $painting) {
     return view('gallery.edit', ['painting' => $painting]);
+});
+
+//update the painting
+Route::patch('/gallery/{painting}', function (Painting $painting) {
+    //authorize on hold
+    //validate
+    request()->validate([
+        'title' => 'required|min:3',
+        'price' => 'required'
+    ]);
+    $painting->update([
+        'title' => request('title'),
+        'price' => request('price')
+    ]);
+    return redirect('/gallery/' . $painting->id);
+
+});
+
+//delete the painting
+Route::delete('/gallery/{painting}', function (Painting $painting) {
+    $painting->delete();
+
+    return redirect('/gallery');
 });
 
 //about page
