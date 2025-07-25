@@ -108,8 +108,10 @@
 
       @if (request()->is('gallery'))
         <x-button href="/gallery/create">Post Artwork</x-button>
-      @else
+      @elseif (request()->is('gallery/create'))
         <x-button href="/gallery">Back to Gallery</x-button>
+      @else
+      
       @endif
 
     </div>
