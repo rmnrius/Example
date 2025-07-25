@@ -103,8 +103,15 @@
   </nav>
 
   <header class="bg-white shadow-sm">
-    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 sm:flex sm:justify-between sm:items-center">
       <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{$heading}}</h1>
+
+      @if (request()->is('gallery'))
+        <x-button href="/gallery/create">Post Artwork</x-button>
+      @else
+        <x-button href="/gallery">Back to Gallery</x-button>
+      @endif
+
     </div>
   </header>
   <main>
